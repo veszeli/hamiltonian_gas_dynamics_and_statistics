@@ -1,7 +1,7 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-class OuterPotential(ABC):
+class ExternalPotential(ABC):
 	@abstractmethod
 	def energy(coordinates):
 		"""
@@ -30,7 +30,7 @@ class OuterPotential(ABC):
 		pass
 
 
-class SimpleQuadraticPotential(OuterPotential):
+class SimpleQuadraticPotential(ExternalPotential):
 	def __init__(self, a):
 		r"""
 		Potential in the form:
