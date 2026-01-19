@@ -9,7 +9,7 @@ class GasDynamics:
     def sie(self, r, p, dt):
         "Semi implicit Euler method"
         p2 = p + self.g(r)*dt
-        r2 = r + self.f(p)*dt
+        r2 = r + self.f(p2)*dt
         return r2, p2
 
     def walls(self, r,p):
