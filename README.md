@@ -32,13 +32,22 @@ where:
 - \( T(p) \) is the kinetic energy,
 - \( V(q) \) is the potential energy.
 
-The potential energy is
+$$
+T(p) = \sum_{i=1}^N ||p_i||^2 / (2*m)
+$$
+
+Here, ||.|| denotes the Euclidean norm in R^d.
+
+$$
+V(q) = \sum_{i=1}^N V_{ext}(q_i) + \sum_{1 <= i < j <= N} V_{pair}(||q_i - q_j||)
+$$
+
 The equations of motion are given by Hamilton’s equations:
 
-\[
+$$
 \dot{q} = \frac{\partial H}{\partial p}, \qquad
 \dot{p} = -\frac{\partial H}{\partial q}.
-\]
+$$
 
 ---
 
@@ -46,12 +55,12 @@ The equations of motion are given by Hamilton’s equations:
 
 Time integration is performed using the semi-implicit (symplectic) Euler scheme:
 
-\[
+$$
 \begin{aligned}
  p_{n+1} &= p_n - \Delta t \, \nabla_q V(q_n), \\
  q_{n+1} &= q_n + \Delta t \, \nabla_p T(p_{n+1}).
 \end{aligned}
-\]
+$$
 
 This method is symplectic, making it well-suited for Hamiltonian systems where long-term qualitative behavior (such as approximate energy conservation) is important.
 
@@ -61,27 +70,9 @@ This method is symplectic, making it well-suited for Hamiltonian systems where l
 
 ```
 .
-├── src/            # Core simulation code
-├── examples/       # Example scripts and configurations
-├── utils/          # Helper functions (initial conditions, plotting, etc.)
-├── README.md       # Project documentation
-└── requirements.txt
-```
-
-*(Directory names may vary depending on the version of the project.)*
-
----
-
-## Requirements
-
-- Python 3.8 or newer
-- NumPy
-- Matplotlib (for visualization)
-
-Install dependencies with:
-
-```bash
-pip install -r requirements.txt
+├── src/                    # Core simulation code
+├── testing_notebook.ipynb  # Example notebook
+└── README.md               # Project documentation
 ```
 
 ---
@@ -90,7 +81,7 @@ pip install -r requirements.txt
 
 A typical workflow consists of:
 1. Defining the number of particles and interaction parameters
-2. Initializing positions and momenta
+2. Initializing positions and momenta. Both of them are 2D numpy arrays with shape: (num_particles, dimension)
 3. Running the time integration loop
 4. Analyzing or visualizing the results
 
@@ -104,8 +95,6 @@ The simulation can produce:
 - Particle trajectories
 - Phase-space plots
 - Energy vs. time plots (to assess numerical stability)
-
-Visualization scripts are provided in the `examples/` or `utils/` directories.
 
 ---
 
