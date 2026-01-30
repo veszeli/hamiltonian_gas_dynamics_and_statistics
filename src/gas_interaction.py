@@ -24,7 +24,7 @@ class InteractionPairPotential(InteractionPotential):
         n = len(coordinates)
         u = 0
         for i in range(n):
-            for j in range(i, n):
+            for j in range(i+1, n):
                 u += self.pair_potential(coordinates[i], coordinates[j])
         return u
 
