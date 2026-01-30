@@ -24,7 +24,7 @@ Key features include:
 
 The system is governed by a Hamiltonian of the form
 
-\[ H(q, p) = T(p) + V(q) \]
+$$ H(q, p) = T(p) + V(q) $$
 
 where:
 - \( q \) denotes particle positions,
